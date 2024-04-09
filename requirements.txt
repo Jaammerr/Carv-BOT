@@ -1,0 +1,12 @@
+pyuseragents~=1.0.5
+requests~=2.31.0
+loguru~=0.7.2
+web3~=6.16.0
+PyYAML~=6.0.1
+pydantic~=2.6.4
+termcolor~=2.4.0
+pyfiglet~=1.0.2
+colorama~=0.4.6
+pygments~=2.17.2
+noble_tls
+eth_account

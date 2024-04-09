@@ -1,0 +1,9 @@
+networks:
+  - RONIN
+  - OP
+  - ZK
+  - LINEA
+
+op_rpc: "https://opbnb-mainnet-rpc.bnbchain.org"
+zk_rpc: "https://mainnet.era.zksync.io"
+linea_rpc: "https://1rpc.io/linea"
