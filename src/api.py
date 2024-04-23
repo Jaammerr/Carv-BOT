@@ -163,14 +163,3 @@ class CarvAPI(noble_tls.Session):
         await self.send_request(
             method="/airdrop/data_rewards/claim", json_data=json_data
         )
-
-
-#     async def start(self):
-#         await self.login()
-#         await self.process_mint()
-#
-#
-#
-# if __name__ == "__main__":
-#     bot = CarvBot("setup vessel service meadow say neither certain spatial demand sea elder tennis")
-#     asyncio.run(bot.start())
