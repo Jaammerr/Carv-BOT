@@ -21,7 +21,7 @@ def get_accounts() -> Account:
         for account in accounts:
             values = account.split("|")
             if len(values) == 2:
-                yield Account(mnemonic=values[0].strip(), proxy=values[1].strip())
+                yield Account(pk_or_mnemonic=values[0].strip(), proxy=values[1].strip())
 
             else:
                 logger.error(

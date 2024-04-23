@@ -27,7 +27,7 @@ class CarvAPI(noble_tls.Session):
 
         self.account = account
         self.wallet = Wallet(
-            mnemonic=account.mnemonic, session=self.build_web3_session()
+            pk_or_mnemonic=account.pk_or_mnemonic, session=self.build_web3_session()
         )
         self.setup_session()
 

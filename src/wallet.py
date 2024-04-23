@@ -13,15 +13,15 @@ Account.enable_unaudited_hdwallet_features()
 
 
 class Wallet:
-    def __init__(self, mnemonic: str, session: requests.Session = None):
+    def __init__(self, pk_or_mnemonic: str, session: requests.Session = None):
         self.op_bnb = Web3(Web3.HTTPProvider(config.op_rpc, session=session))
         self.zk_sync = Web3(Web3.HTTPProvider(config.zk_rpc, session=session))
         self.linea = Web3(Web3.HTTPProvider(config.linea_rpc, session=session))
         self.linea.middleware_onion.inject(geth_poa_middleware, layer=0)
 
-        self.op_bnb_wallet = self.op_bnb.eth.account.from_mnemonic(mnemonic)
-        self.zk_sync_wallet = self.zk_sync.eth.account.from_mnemonic(mnemonic)
-        self.linea_wallet = self.linea.eth.account.from_mnemonic(mnemonic)
+        self.op_bnb_wallet = self.op_bnb.eth.account.from_mnemonic(pk_or_mnemonic) if len(pk_or_mnemonic.split()) in (12, 24) else self.op_bnb.eth.account.from_key(pk_or_mnemonic)
+        self.zk_sync_wallet = self.zk_sync.eth.account.from_mnemonic(pk_or_mnemonic) if len(pk_or_mnemonic.split()) in (12, 24) else self.zk_sync.eth.account.from_key(pk_or_mnemonic)
+        self.linea_wallet = self.linea.eth.account.from_mnemonic(pk_or_mnemonic) if len(pk_or_mnemonic.split()) in (12, 24) else self.linea.eth.account.from_key(pk_or_mnemonic)
 
         self.linea_contract = self.linea.eth.contract(
             self.linea.to_checksum_address(LineaContract.address), abi=LineaContract.abi
